@@ -1,6 +1,6 @@
 import argparse
 import sys
-import service
+import gradebook.service as service
 import logging
 
 logging.basicConfig(

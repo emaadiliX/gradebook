@@ -1,8 +1,20 @@
+"""
+Service layer for gradebook operations.
+Contains business logic for managing students, courses, enrollments, and grades.
+"""
+
 from gradebook.models import Student, Course, Enrollment
-from storage import load_data, save_data
+from .storage import load_data, save_data
 
 
 def add_student(name):
+    """
+    Add a new student to the gradebook.
+
+    Args: name: Student name as a string
+
+    Returns: The new student ID
+    """
     data = load_data()
 
     if data["students"]:
@@ -19,6 +31,17 @@ def add_student(name):
 
 
 def add_course(code, title):
+    """
+    Add a new course to the gradebook.
+
+    Args:
+        code: Course code (e.g., 'CS101')
+        title: Course title
+
+    Returns: The new Course object
+
+    Raises a ValueError if course code already exists
+    """
     data = load_data()
 
     for course in data['courses']:
@@ -39,6 +62,15 @@ def add_course(code, title):
 
 
 def enroll(student_id, course_code):
+    """
+    Enroll a student in a course.
+
+    Args:
+        student_id: Student ID number
+        course_code: Course code (e.g., 'CS101')
+
+    Returns: The new Enrollment object, or None if enrollment failed
+    """
     data = load_data()
 
     if not any(s["id"] == student_id for s in data["students"]):
@@ -67,6 +99,20 @@ def enroll(student_id, course_code):
 
 
 def add_grade(student_id, course_code, grade):
+    """
+    Add a grade for a student in a course.
+
+    Args:
+        student_id: Student ID number
+        course_code: Course code
+        grade: Grade value (0-100)
+
+    Raises:
+        TypeError: If grade is not a number
+        ValueError: If grade is not between 0 and 100
+        ValueError: If enrollment not found
+    """
+
     data = load_data()
 
     if not isinstance(grade, (int, float)):
@@ -85,21 +131,43 @@ def add_grade(student_id, course_code, grade):
 
 
 def list_students():
+    """
+    Get a sorted list of all students.
+    """
     data = load_data()
     return sorted(data["students"], key=lambda s: s["name"].lower())
 
 
 def list_courses():
+    """
+    Get a sorted list of all courses.
+    """
     data = load_data()
     return sorted(data["courses"], key=lambda c: c["code"].lower())
 
 
 def list_enrollments():
+    """
+    Get a sorted list of all enrollments.
+    """
     data = load_data()
     return sorted(data["enrollments"], key=lambda e: (e["student_id"], e["course_code"]))
 
 
 def compute_average(student_id, course_code):
+    """
+    Compute the average grade for a student in a course.
+
+    Args:
+        student_id: Student ID number
+        course_code: Course code
+
+    Returns:
+        Average grade as a float, or 0.0 if no grades
+
+    Raises:
+        ValueError: If enrollment not found
+    """
     data = load_data()
 
     for enrollment in data['enrollments']:
@@ -114,6 +182,20 @@ def compute_average(student_id, course_code):
 
 
 def compute_gpa(student_id):
+    """
+    Compute the GPA for a student across all courses.
+
+    GPA is calculated as the average of all course averages.
+
+    Args:
+        student_id: Student ID number
+
+    Returns:
+        GPA as a float, or 0.0 if no grades
+
+    Raises:
+        ValueError: If student not found
+    """
     data = load_data()
 
     student_exists = any(s['id'] == student_id for s in data['students'])

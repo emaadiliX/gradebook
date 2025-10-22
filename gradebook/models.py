@@ -34,6 +34,14 @@ class Student:
 
 
 class Course:
+    """
+    Represents a course in the gradebook.
+
+    Attributes:
+        code: Course code (e.g., 'CS101')
+        title: Course title
+    """
+
     def __init__(self, code, title):
         if not isinstance(code, str) or code.strip() == "":
             raise ValueError("Please provide a valid course code like 'CS101'")
@@ -44,10 +52,24 @@ class Course:
         self.title = title
 
     def __str__(self):
+        """Return string representation of the course."""
         return f"Course {self.title} - code {self.code}."
 
 
 class Enrollment:
+    """
+    Represents a student's enrollment in a course.
+
+    Attributes:
+        student_id: ID of the enrolled student
+        course_code: Code of the course
+        grades: List of grades for this enrollment
+
+        Raises:
+            ValueError: If student_id, course_code, or grades are invalid
+            TypeError: If grades is not a list or contains non-numeric values
+    """
+
     def __init__(self, student_id, course_code, grades: list):
         if not student_id:
             raise ValueError("student_id cannot be empty")
@@ -69,4 +91,5 @@ class Enrollment:
         self.grades = grades
 
     def __str__(self):
+        """Return string representation of the enrollment."""
         return f"Student with id {self.student_id} has enrolled in course with code {self.course_code} and has a grade of {self.grades}."
