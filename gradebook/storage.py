@@ -8,16 +8,6 @@ import json
 import os
 import logging
 
-log_dir = 'logs'
-if not os.path.exists(log_dir):
-    os.makedirs(log_dir)
-
-logging.basicConfig(
-    filename='logs/app.log',
-    level=logging.INFO,
-    format='%(asctime)s - %(levelname)s - %(message)s'
-)
-
 
 def load_data(path='data/gradebook.json'):
     """
@@ -48,6 +38,7 @@ def load_data(path='data/gradebook.json'):
         logging.error("Could not read JSON in '" +
                       path + "', file might be corrupted")
         print(f"Could not read JSON in '{path}', file might be corrupted.")
+        return {'students': [], 'courses': [], 'enrollments': []}
 
 
 def save_data(data, path='data/gradebook.json'):

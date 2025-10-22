@@ -1,7 +1,12 @@
 import argparse
 import sys
+import os
 import gradebook.service as service
 import logging
+
+log_dir = 'logs'
+if not os.path.exists(log_dir):
+    os.makedirs(log_dir)
 
 logging.basicConfig(
     filename='logs/app.log',
@@ -186,7 +191,7 @@ def main():
                   ": " + str(round(gpa, 2)))
 
     except ValueError as e:
-        logging.error("TypeError occurred: " + str(e))
+        logging.error("ValueError occurred: " + str(e))
         print("Error: " + str(e))
         sys.exit(1)
     except TypeError as e:

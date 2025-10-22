@@ -162,11 +162,9 @@ def compute_average(student_id, course_code):
         student_id: Student ID number
         course_code: Course code
 
-    Returns:
-        Average grade as a float, or 0.0 if no grades
+    Returns: Average grade as a float, or 0.0 if no grades
 
-    Raises:
-        ValueError: If enrollment not found
+    Raises: ValueError: If enrollment not found
     """
     data = load_data()
 
@@ -185,16 +183,11 @@ def compute_gpa(student_id):
     """
     Compute the GPA for a student across all courses.
 
-    GPA is calculated as the average of all course averages.
+    Args: student_id: Student ID number
 
-    Args:
-        student_id: Student ID number
+    Returns: GPA as a float, or 0.0 if no grades
 
-    Returns:
-        GPA as a float, or 0.0 if no grades
-
-    Raises:
-        ValueError: If student not found
+    Raises: ValueError: If student not found
     """
     data = load_data()
 

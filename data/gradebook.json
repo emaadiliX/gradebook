@@ -1,22 +1,83 @@
 {
   "students": [
-    {"id": 1, "name": "Ema Adili"},
-    {"id": 2, "name": "Bardha Uka"},
-    {"id": 3, "name": "Mergim Berisha"}
+    {
+      "id": 1,
+      "name": "Ema Adili"
+    },
+    {
+      "id": 2,
+      "name": "Rina Uka"
+    },
+    {
+      "id": 3,
+      "name": "Rona Berisha"
+    }
   ],
-
   "courses": [
-    {"code": "CS101", "title": "Introduction to Computer Science"},
-    {"code": "ENG203", "title": "English Literature"},
-    {"code": "MATH101", "title": "Introduction to trigonometry"}
+    {
+      "code": "CS101",
+      "title": "Introduction to Computer Science"
+    },
+    {
+      "code": "ENG102",
+      "title": "English Literature"
+    },
+    {
+      "code": "MATH201",
+      "title": "Advanced Mathematics"
+    }
   ],
-
   "enrollments": [
-    {"student_id": 1, "course_code": "CS101", "grades": [95, 88, 90]},
-    {"student_id": 1, "course_code": "ENG102", "grades": [82, 86]},
-    {"student_id": 2, "course_code": "CS101", "grades": [75, 80, 70]},
-    {"student_id": 2, "course_code": "MATH201", "grades": [90, 92]},
-    {"student_id": 3, "course_code": "CS101", "grades": [100, 97]},
-    {"student_id": 3, "course_code": "ENG102", "grades": [85, 88, 91]}
+    {
+      "student_id": 1,
+      "course_code": "CS101",
+      "grades": [
+        95,
+        88,
+        90
+      ]
+    },
+    {
+      "student_id": 1,
+      "course_code": "ENG102",
+      "grades": [
+        82,
+        86
+      ]
+    },
+    {
+      "student_id": 2,
+      "course_code": "CS101",
+      "grades": [
+        75,
+        80,
+        70
+      ]
+    },
+    {
+      "student_id": 2,
+      "course_code": "MATH201",
+      "grades": [
+        90,
+        92
+      ]
+    },
+    {
+      "student_id": 3,
+      "course_code": "CS101",
+      "grades": [
+        100,
+        97
+      ]
+    },
+    {
+      "student_id": 3,
+      "course_code": "ENG102",
+      "grades": [
+        85,
+        88,
+        91
+      ]
+    }
   ]
 }
